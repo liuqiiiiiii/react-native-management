@@ -3,21 +3,21 @@
 
     <item
         is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_98d4253d1be8b3b831ae9507a2c8bc1b1cc1989d.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
         <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_1e07b1742f6c3a6d4ee852eb81e71718d3fba7fd.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_2f62f7af2e5467c51204e680c512745eb0ba98b7.jar" />
     </item>
     <item
         is-multidex="false"
@@ -48,12 +48,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/a11/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline/1.3.0/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="6975da39a7040257bd51d21a231b76c915872d38">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_08897c1472b336ed6b17dd87c99407564c7407ac.jar" />
+        sha1="48c7f54c2515a2312d3a4481d10c43fbb807f3af">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-1.3.0_c551bcd3a9faae578c655c742639bc7a774db13c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -66,6 +66,24 @@
     </item>
     <item
         is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fbcore/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="37345de2ed2772f385eaeec37a9c2ff0fea99ad7">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fbcore-1.3.0_2b96864ff8b69b5c3bbc6131b28601a558bb9cb9.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_4b076122db7fd72f0ad625da351604a993b3c610.jar" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/management/react-native-vector-icons/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
@@ -75,39 +93,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
         sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_5f1603286a7f7482784852dc6de4e9d87a439626.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_93bf7115c540daa6f57830dc4a466a41787fd23b.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_d503efd2c8d2225e6284846033b7176e6f41ea3a.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_94ce456e22a0b60a71674338abaac51619d0d16b.jar" />
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_a3cd08fffeafe60bc885584677fb42b4c329f271.jar" />
     </item>
     <item
         is-multidex="false"
@@ -129,21 +120,12 @@
     </item>
     <item
         is-multidex="false"
-        jar="/Users/a11/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/management/react-native-vector-icons/unspecified/jars/classes.jar"
         jumboMode="false"
         optimize="true"
         revision="23.0.1"
-        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_0a19c23770d2a081b1d05f005eb9d20c04ffaf97.jar" />
-    </item>
-    <item
-        is-multidex="false"
-        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/jars/libs/infer-annotations-4.0.jar"
-        jumboMode="false"
-        optimize="true"
-        revision="23.0.1"
-        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
-        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_2b68f3d7a2608147448c43057970eaef0183512c.jar" />
+        sha1="279750fed3c920d06351dbf32889c1b48203c7ad">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/management-react-native-vector-icons-unspecified_1efc358c39aecb8149c476fcb2a3223c5062fe5b.jar" />
     </item>
     <item
         is-multidex="false"
@@ -153,6 +135,15 @@
         revision="23.0.1"
         sha1="5871fb60dc68d67da54a663c3fd636a10a532948">
         <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/jsr305-3.0.0_1bfedf754081ffa9da1465d2db0e005942c00ffc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/fresco/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="fe85b87215e405f5917d40ae4960488ac9224b74">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-fresco-1.3.0_a17fd3a10cc595f7f4c00f5b07e05377ed11e43c.jar" />
     </item>
     <item
         is-multidex="false"
@@ -189,6 +180,141 @@
         revision="23.0.1"
         sha1="d85884acf6810a3bbbecb587f239005cbc846dc4">
         <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/bolts-tasks-1.4.0_5c9ea25f411dc86cf3353bd2a22a49f83853a79f.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.soloader/soloader/0.1.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="8f615bca00639150c9eb6175d4b5471193f70794">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.soloader-soloader-0.1.0_34cef1eb4d749c89b86a0af7616507a3e3167475.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_2f62f7af2e5467c51204e680c512745eb0ba98b7.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/.gradle/caches/modules-2/files-2.1/javax.inject/javax.inject/1/6975da39a7040257bd51d21a231b76c915872d38/javax.inject-1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="6975da39a7040257bd51d21a231b76c915872d38">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/javax.inject-1_08897c1472b336ed6b17dd87c99407564c7407ac.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_5803686079546ecd19cbdcff2d0733bed09b7efc.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="e31331bdf6b5952badadbfc171f04b95c55d3b16">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.react-react-native-0.55.4_3b3e62d25cc6c20badfd4f07b7c297800cafbe9e.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/libs/internal_impl-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="aa92916125166649d8ad4ba3940c3dd7515596d3">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/internal_impl-23.0.1_5f1603286a7f7482784852dc6de4e9d87a439626.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_93bf7115c540daa6f57830dc4a466a41787fd23b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-okhttp3/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c03c08c9934b23c8c09c803345ec51a74119127b">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-okhttp3-1.3.0_d503efd2c8d2225e6284846033b7176e6f41ea3a.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/drawee/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c65a2e39d54023bac3aef64a2f0cff89289c7ff6">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-drawee-1.3.0_157437520124f586734f7597de7ad30ef84a9fd6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.fbui.textlayoutbuilder/textlayoutbuilder/1.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="f90b593491e4044903f0bbf68dc3fa2790b151b9">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fbui.textlayoutbuilder-textlayoutbuilder-1.0.0_3d5952035ce252cf1d0fe9c4a598d24ef1aee12c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/support-v4/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="c31e21b53ff2f74664e498248d01453a32e32d48">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/com.android.support-support-v4-23.0.1_94ce456e22a0b60a71674338abaac51619d0d16b.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/23.0.1/support-annotations-23.0.1.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="1fce89a6428c51467090d7f424e4c9c3dbd55f7e">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/support-annotations-23.0.1_0a19c23770d2a081b1d05f005eb9d20c04ffaf97.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/jars/libs/infer-annotations-4.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="9809e90be788acdb479b2b44e2112f3295a03068">
+        <dex dex="/Users/a11/Github/React-Native/management/android/app/build/intermediates/pre-dexed/debug/infer-annotations-4.0_2b68f3d7a2608147448c43057970eaef0183512c.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="d86429b0f0b3f3cafbeb78dda1b9d89119ccb05d">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.android.support-appcompat-v7-23.0.1_d6588916be3d954277e753a8442a70b9e69704c6.jar" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.fresco/imagepipeline-base/1.3.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.1"
+        sha1="72128af126ddd7d6252da9357fe560d3abcdfb0c">
+        <dex dex="/Users/a11/Github/react-native-management/android/app/build/intermediates/pre-dexed/debug/com.facebook.fresco-imagepipeline-base-1.3.0_0de9eb07a088be8eceaa725283b3b3774d7581d3.jar" />
     </item>
     <item
         is-multidex="false"

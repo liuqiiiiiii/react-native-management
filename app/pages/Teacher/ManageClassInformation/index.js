@@ -4,6 +4,7 @@ import {
   Text,
   View,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 
@@ -23,18 +24,18 @@ class ManageClassInformation extends Component {
         <View style={styles.class}>
           <Text style={styles.classFont}>班主任</Text>
         </View>
-        <View style={styles.card}>
+        <TouchableOpacity style={styles.card}>
           {
             this.props.theTeacherInCharge.map((item) => {
               return (
                 <TheTeacherInCharge
-                  key={item.id}
+                  key={`student${item.id}`}
                   item={item}
                 />
               );
             })
           }
-        </View>
+        </TouchableOpacity>
 
         <View style={styles.class}>
           <Text style={styles.classFont}>班干部</Text>
@@ -57,7 +58,7 @@ class ManageClassInformation extends Component {
         </View>
         <View style={styles.card}>
           {
-            this.props.ordinary.map((item) => {
+            this.props.classmate.map((item) => {
               console.log(`student: ${JSON.stringify(item)}`);
               return (
                 <Classmate

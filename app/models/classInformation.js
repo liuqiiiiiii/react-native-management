@@ -14,23 +14,16 @@ export default {
       office: '一校区单身楼613',
     }],
 
-    classCadre: [{
-      id: 1,
-      image: 'https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=845061817,3482904951&fm=27&gp=0.jpg',
-      position: '班长',
-      name: '徐基欣',
-      gender: '男',
-      class: '计算机14k2班',
-      studentID: '141909010222',
-      mobilePhone: '18331290137',
-    }],
+    classCadre: [],
 
-    ordinary: [],
+    classmate: [],
   },
   effects: {
     * saveStudents({ payload }, { put }) {
       console.log(`saveStudents ${JSON.stringify(payload.data)}`);
-      yield put(createAction('update')({ ordinary: payload.data }));
+      yield put(createAction('update')({ theTeacherInCharge: payload.data }));
+      yield put(createAction('update')({ classCadre: payload.data }));
+      yield put(createAction('update')({ classmate: payload.data }));
     },
   },
   reducers: {

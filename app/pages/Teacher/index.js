@@ -26,7 +26,7 @@ class Student extends Component {
     dispatch = dispatcher(this.props);
   }
 
-  onLoadOridary = async () => {
+  management = async () => {
     try {
       console.log(`liuqi sb ${this.props.className}`);
       let res = await fetch('http://10.0.0.43:8080/student/getall', {//eslint-disable-line
@@ -70,7 +70,7 @@ class Student extends Component {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={this.onLoadOridary}
+            onPress={this.management}
             style={styles.card}
           >
             <Icon
@@ -87,7 +87,6 @@ class Student extends Component {
 
         <View style={styles.arrangement}>
           <TouchableOpacity
-            onPress={this.onLoadOridary}
             style={styles.card}
           >
             <Icon
