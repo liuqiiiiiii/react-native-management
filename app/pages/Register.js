@@ -67,8 +67,8 @@ class PersonalInformation extends Component {
             prompt="选择登录方式"
             mode="dialog"
           >
-            <Picker.Item label="学生登录" value="student" />
-            <Picker.Item label="教师登录" value="teacher" />
+            <Picker.Item label="学生注册" value="student" />
+            <Picker.Item label="教师注册" value="teacher" />
           </Picker>
         </View>
 

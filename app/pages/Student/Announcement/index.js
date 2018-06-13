@@ -6,6 +6,7 @@ import {
 import { connect } from 'react-redux';
 
 import Navigator, { dispatcher } from '../../../helper/navigator';
+import { createAction } from '../../../helper';
 import AnnoucementTitle from '../../Teacher/ReleaseAnnouncement/AnnoucementTitle';
 
 import Layout from '../../../res/dimensions';
@@ -21,23 +22,22 @@ class ReleaseAnnouncement extends Component {
     dispatch = dispatcher(this.props);
   }
   render() {
-    return (
-      <TouchableOpacity
-        style={styles.global}
-        onPress={() => dispatch(Navigator.navigate('AnnouncementContent'))}
-      >
-        {
-          this.props.title.map((item) => {
-            return (
-              <AnnoucementTitle
-                key={item.id}
-                item={item}
-              />
-            );
-          })
-        }
-      </TouchableOpacity>
-    );
+    return this.props.title.map((item) => {
+      return (
+        <TouchableOpacity
+          style={styles.global}
+          onPress={() => {
+            dispatch(createAction('annoucement/saveSelect')({ item }))
+            dispatch(Navigator.navigate('AnnouncementContent'))
+          }}
+          key={`an-${item.id}`}
+        >
+          <AnnoucementTitle
+            item={item}
+          />
+        </TouchableOpacity>
+      );
+    })
   }
 }
 
