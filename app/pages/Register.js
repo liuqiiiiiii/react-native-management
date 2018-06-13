@@ -10,6 +10,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 
+import Navigator, { dispatcher, baseURL } from '../helper/navigator';
 import Layout from '../res/dimensions';
 
 class PersonalInformation extends Component {
@@ -20,7 +21,6 @@ class PersonalInformation extends Component {
     super(props);
     this.state = {
       edit: '注册',
-      onEdit: true,
       role: 'student',
       classroom: '',
       userName: '',
@@ -29,22 +29,10 @@ class PersonalInformation extends Component {
   }
 
   handleSubmit = async () => {
-
-    if (this.state.edit === '注册') {
-      this.setState({
-        edit: '完成注册，请返回',
-      });
-    } else {
-      this.setState({
-        edit: '注册',
-      });
-    }
-    this.setState({
-      onEdit: !this.state.onEdit,
-    });
+    const dispatch = dispatcher(this.props);
 
     try {
-      let res = await fetch('http://10.0.0.43:8080/user/register', {//eslint-disable-line
+      let res = await fetch(`${baseURL}/user/register`, {//eslint-disable-line
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
@@ -57,15 +45,13 @@ class PersonalInformation extends Component {
       });
       const data = await res.json();
       console.log('register: ', data);
-      if (data.status === 0) {
+      if (data.status !== 0) {
         Alert.alert(
           '你输入的信息不正确，请重新输入',
         )
       } else {
-        Alert.alert(
-          '恭喜你注册成功',
-        )
-        }
+        dispatch(Navigator.navigate('Main'));
+      }
     } catch (e) {
       console.log(`error: ${e}`);
     }
@@ -95,7 +81,6 @@ class PersonalInformation extends Component {
             autoFocus={true}
             value={this.state.classroom}
             onChangeText={(classroom) => this.setState({ classroom })}
-            editable={this.state.onEdit}
           />
         </View>
 
@@ -107,7 +92,6 @@ class PersonalInformation extends Component {
             style={styles.textInput}
             value={this.state.userName}
             onChangeText={(userName) => this.setState({ userName })}
-            editable={this.state.onEdit}
           />
         </View>
 
@@ -118,8 +102,8 @@ class PersonalInformation extends Component {
           <TextInput
             style={styles.textInput}
             value={this.state.password}
+            secureTextEntry
             onChangeText={(password) => this.setState({ password })}
-            editable={this.state.onEdit}
           />
         </View>
 
@@ -128,7 +112,7 @@ class PersonalInformation extends Component {
             onPress={this.handleSubmit}
             style={styles.button}
           >
-            <Text style={styles.editFont}>{this.state.edit}</Text>
+            <Text style={styles.editFont}>注册</Text>
           </TouchableOpacity>
         </View>
 
