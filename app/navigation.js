@@ -10,7 +10,7 @@ import Teacher from './pages/Teacher/index';
 import TeacherPersonalInformation from './pages/Teacher/PersonalInformation/index';
 import ManageClassInformation from './pages/Teacher/ManageClassInformation/index';
 import ReleaseAnnouncement from './pages/Teacher/ReleaseAnnouncement/index';
-import AnnouncementContent from './pages/Teacher/ReleaseAnnouncement/AnnouncementContent';
+import addAnnouncement from './pages/Teacher/ReleaseAnnouncement/addAnnouncement';
 import ScoreEntry from './pages/Teacher/ScoreEntry/index';
 
 import Register from './pages/Register';
@@ -28,7 +28,7 @@ const Navigations = {
   ManageClassInformation: { screen: ManageClassInformation },
   TeacherPersonalInformation: { screen: TeacherPersonalInformation },
   ReleaseAnnouncement: { screen: ReleaseAnnouncement },
-  AnnouncementContent: { screen: AnnouncementContent },
+  addAnnouncement: { screen: addAnnouncement },
   ScoreEntry: { screen: ScoreEntry },
 
   Register: { screen: Register },

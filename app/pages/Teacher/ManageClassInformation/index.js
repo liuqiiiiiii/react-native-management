@@ -7,6 +7,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
+import Navigator, { dispatcher } from '../../../helper/navigator';
 
 import TheTeacherInCharge from './TheTeacherInCharge';
 import ClassCadre from './ClassCadre';
@@ -14,9 +15,17 @@ import Classmate from './Classmate';
 
 import Layout from '../../../res/dimensions';
 
+let dispatch;
+
 class ManageClassInformation extends Component {
   static navigationOptions = {
     header: null,
+  }
+
+  constructor(props) {
+    super(props);
+    dispatch = dispatcher(this.props);
+    this.state = {};
   }
   render() {
     return (
@@ -24,7 +33,10 @@ class ManageClassInformation extends Component {
         <View style={styles.class}>
           <Text style={styles.classFont}>班主任</Text>
         </View>
-        <TouchableOpacity style={styles.card}>
+        <TouchableOpacity
+            onPress={() => dispatch(Navigator.navigate('TeacherPersonalInformation'))}
+          style={styles.card}
+        >
           {
             this.props.theTeacherInCharge.map((item) => {
               return (

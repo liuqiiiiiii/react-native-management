@@ -7,7 +7,7 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Button } from 'react-native-elements';
 
 import Layout from '../../../res/dimensions';
 
@@ -15,43 +15,37 @@ class PersonalInformation extends Component {
   static navigationOptions = {
     header: null,
   }
+
   constructor(props) {
     super(props);
     this.state = {
-      edit: '编辑',
+      edit: '编辑以上信息',
       onEdit: false,
-      name: '刘琦',
-      gender: '男',
-      QQ: '982252163',
-      wechat: 'liuqi982252163',
-      phone: '18331295996',
-      address: '一校区单身楼613',
+      name: '',
+      gender: '',
+      phone: '',
+      office: '',
     };
   }
+
   enableEdit = () => {
-    if (this.state.edit === '编辑') {
+    if (this.state.edit === '编辑以上信息') {
       this.setState({
         edit: '完成',
       });
     } else {
       this.setState({
-        edit: '编辑',
+        edit: '编辑以上信息',
       });
     }
     this.setState({
       onEdit: !this.state.onEdit,
     });
   }
+
   render() {
     return (
       <ScrollView style={styles.global}>
-        <View style={styles.edit}>
-          <TouchableOpacity
-            onPress={this.enableEdit}
-          >
-            <Text style={styles.editFont}>{this.state.edit}</Text>
-          </TouchableOpacity>
-        </View>
 
         <View style={styles.avatar}>
           <Avatar
@@ -61,6 +55,14 @@ class PersonalInformation extends Component {
             onPress={() => {}}
             activeOpacity={0.7}
           />
+          <View style={{ marginTop: Layout.Height(40) }}>
+            <Button
+              raised
+              buttonStyle={{ backgroundColor: 'lightcoral'}}
+              icon={{name: 'cached'}}
+              title='更改头像'
+            />
+          </View>
         </View>
 
         <View style={styles.input}>
@@ -69,6 +71,7 @@ class PersonalInformation extends Component {
           </View>
           <TextInput
             style={styles.textInput}
+            placeholder="点击编辑"
             value={this.state.name}
             onChangeText={({ name }) => this.setState({ name })}
             editable={this.state.onEdit}
@@ -81,31 +84,9 @@ class PersonalInformation extends Component {
           </View>
           <TextInput
             style={styles.textInput}
+            placeholder="点击编辑"
             value={this.state.gender}
             onChangeText={({ gender }) => this.setState({ gender })}
-            editable={this.state.onEdit}
-          />
-        </View>
-
-        <View style={styles.input}>
-          <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>QQ</Text>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.QQ}
-            onChangeText={({ QQ }) => this.setState({ QQ })}
-            editable={this.state.onEdit}
-          />
-        </View>
-        <View style={styles.input}>
-          <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>微信</Text>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.wechat}
-            onChangeText={({ wechat }) => this.setState({ wechat })}
             editable={this.state.onEdit}
           />
         </View>
@@ -116,6 +97,7 @@ class PersonalInformation extends Component {
           </View>
           <TextInput
             style={styles.textInput}
+            placeholder="点击编辑"
             value={this.state.phone}
             onChangeText={({ phone }) => this.setState({ phone })}
             editable={this.state.onEdit}
@@ -128,9 +110,20 @@ class PersonalInformation extends Component {
           </View>
           <TextInput
             style={styles.textInput}
-            value={this.state.address}
-            onChangeText={({ address }) => this.setState({ address })}
+            placeholder="点击编辑"
+            value={this.state.office}
+            onChangeText={({ office }) => this.setState({ office })}
             editable={this.state.onEdit}
+          />
+        </View>
+
+        <View style={styles.edit}>
+          <Button
+            raised
+            buttonStyle={{ backgroundColor: 'lightcoral'}}
+            icon={{name: 'code'}}
+            title={this.state.edit}
+            onPress={this.enableEdit}
           />
         </View>
       </ScrollView>
@@ -140,10 +133,11 @@ class PersonalInformation extends Component {
 
 const styles = StyleSheet.create({
   global: {
-    paddingTop: Layout.Height(40),
+    paddingVertical: Layout.Height(40),
   },
   edit: {
-    marginRight: Layout.Width(40),
+    paddingHorizontal: Layout.Width(100),
+    marginBottom: Layout.Height(20),
   },
   editFont: {
     textAlign: 'right',
@@ -168,7 +162,7 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: Layout.Width(300),
-    fontSize: 20,
+    fontSize: 16,
   },
 });
 

@@ -1,114 +1,187 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
+  Text,
+  Picker,
+  ScrollView,
+  Alert,
+  TextInput,
+  TouchableOpacity,
 } from 'react-native';
-import { Button } from 'react-native-elements';
-import { Madoka } from 'react-native-textinput-effects';
 
 import Layout from '../res/dimensions';
 
-export default class Register extends Component {
+class PersonalInformation extends Component {
   static navigationOptions = {
     header: null,
   }
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      edit: '注册',
+      onEdit: true,
+      role: 'student',
+      classroom: '',
+      userName: '',
+      password: '',
+    };
   }
+
+  handleSubmit = async () => {
+
+    if (this.state.edit === '注册') {
+      this.setState({
+        edit: '完成注册，请返回',
+      });
+    } else {
+      this.setState({
+        edit: '注册',
+      });
+    }
+    this.setState({
+      onEdit: !this.state.onEdit,
+    });
+
+    try {
+      let res = await fetch('http://10.0.0.43:8080/user/register', {//eslint-disable-line
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          role: this.state.role,
+          classroom: this.state.classroom,
+          userName: this.state.userName,
+          password: this.state.password,
+        }),
+      });
+      const data = await res.json();
+      console.log('register: ', data);
+      if (data.status === 0) {
+        Alert.alert(
+          '你输入的信息不正确，请重新输入',
+        )
+      } else {
+        Alert.alert(
+          '恭喜你注册成功',
+        )
+        }
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+  }
+
   render() {
     return (
-      <View style={styles.global}>
+      <ScrollView style={styles.global}>
+        <View style={styles.picker}>
+          <Picker
+            selectedValue={this.state.role}
+            onValueChange={lang => this.setState({ role: lang })}
+            prompt="选择登录方式"
+            mode="dialog"
+          >
+            <Picker.Item label="学生登录" value="student" />
+            <Picker.Item label="教师登录" value="teacher" />
+          </Picker>
+        </View>
+
         <View style={styles.input}>
-          <Text style={styles.inputFont}>班级</Text>
-          <Madoka
-            style={{ width: Layout.Width(300), marginLeft: Layout.Width(40) }}
-            borderColor="#FA8072"
-            labelStyle={{ color: '#808080' }}
-            inputStyle={{ color: '#f4a197' }}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputFont}>班级</Text>
+          </View>
+          <TextInput
+            style={styles.textInput}
+            autoFocus={true}
+            value={this.state.classroom}
+            onChangeText={(classroom) => this.setState({ classroom })}
+            editable={this.state.onEdit}
           />
         </View>
+
         <View style={styles.input}>
-          <Text style={styles.inputFont}>用户名</Text>
-          <Madoka
-            style={{ width: Layout.Width(300), marginLeft: Layout.Width(40) }}
-            borderColor="#FA8072"
-            labelStyle={{ color: '#808080' }}
-            inputStyle={{ color: '#f4a197' }}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputFont}>用户名</Text>
+          </View>
+          <TextInput
+            style={styles.textInput}
+            value={this.state.userName}
+            onChangeText={(userName) => this.setState({ userName })}
+            editable={this.state.onEdit}
           />
         </View>
+
         <View style={styles.input}>
-          <Text style={styles.inputFont}>密码</Text>
-          <Madoka
-            style={{ width: Layout.Width(300), marginLeft: Layout.Width(40) }}
-            // this is used as active and passive border color
-            borderColor="#FA8072"
-            labelStyle={{ color: '#808080' }}
-            inputStyle={{ color: '#f4a197' }}
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputFont}>密码</Text>
+          </View>
+          <TextInput
+            style={styles.textInput}
+            value={this.state.password}
+            onChangeText={(password) => this.setState({ password })}
+            editable={this.state.onEdit}
           />
         </View>
-        <View style={styles.input}>
-          <Text style={styles.inputFont}>确认密码</Text>
-          <Madoka
-            style={{ width: Layout.Width(300), marginLeft: Layout.Width(40) }}
-            // this is used as active and passive border color
-            borderColor="#FA8072"
-            labelStyle={{ color: '#808080' }}
-            inputStyle={{ color: '#f4a197' }}
-          />
+
+        <View style={styles.edit}>
+          <TouchableOpacity
+            onPress={this.handleSubmit}
+            style={styles.button}
+          >
+            <Text style={styles.editFont}>{this.state.edit}</Text>
+          </TouchableOpacity>
         </View>
-        <View style={styles.buttonPosition}>
-          <Button
-            title="注册"
-            titleStyle={{ fontWeight: "700" }}
-            buttonStyle={{
-              backgroundColor: "#F4A460",
-              height: 45,
-              borderColor: "transparent",
-              borderRadius: 5,
-            }}
-          />
-        </View>
-      </View>
+
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   global: {
-    marginTop: Layout.Height(60),
+    paddingTop: Layout.Height(80),
   },
-  personal: {
-    marginBottom: Layout.Height(10),
-    paddingTop: Layout.Height(60),
-  },
-  editor: {
-    marginTop: Layout.Height(20),
-    marginRight: Layout.Width(20),
-  },
-  avatar: {
-    alignItems: 'center',
-    marginBottom: Layout.Height(20),
-  },
-  name: {
-    marginTop: Layout.Height(20),
-  },
-  nameStyle: {
-    fontSize: 20,
-    color: '#808080', //gray
+  picker: {
+    paddingHorizontal: Layout.Width(80),
+    marginVertical: Layout.Height(40),
   },
   input: {
-    paddingHorizontal: Layout.Width(40),
     flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'space-around',
-    marginLeft: Layout.Width(40),
+    justifyContent: 'center',
+    marginBottom: Layout.Height(20),
+    paddingHorizontal: Layout.Width(80),
+  },
+  inputTitle: {
+    marginHorizontal: Layout.Width(40),
   },
   inputFont: {
     fontSize: 20,
+    color: '#F08080',
   },
-  buttonPosition: {
+  textInput: {
+    width: Layout.Width(300),
+    fontSize: 20,
+  },
+  edit: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  button :{
     marginTop: Layout.Height(80),
+    backgroundColor: 'lightcoral',
+    height: Layout.Height(80),
+    width: Layout.Width(400),
+    alignItems: 'center',
+    justifyContent: 'center',
+    borderRadius: 5,
+  },
+  editFont: {
+    textAlign: 'right',
+    fontSize: 17,
+    color: 'white',
   },
 });
+
+
+export default PersonalInformation;

@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
+  TouchableOpacity,
 } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 import { connect } from 'react-redux';
@@ -24,13 +25,16 @@ class ReleaseAnnouncement extends Component {
   render() {
     return (
       <View style={styles.global}>
-        <SocialIcon
-          onPress={() => dispatch(Navigator.navigate('AnnouncementContent'))}
-          title="添加公告"
-          button
-          type="envelope"
-          light
-        />
+        <TouchableOpacity
+          onPress={() => dispatch(Navigator.navigate('addAnnouncement'))}
+        >
+          <SocialIcon
+            title="添加公告"
+            button
+            type="envelope"
+            light
+          />
+        </TouchableOpacity>
 
         {
           this.props.title.map((item) => {

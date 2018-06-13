@@ -26,7 +26,7 @@ export default class Index extends Component {
     super(props);
     dispatch = dispatcher(this.props);
     this.state = {
-      loginMode: 'student',
+      role: 'student',
       className: '计算机专业',
       name: '仝月虹',
       pass: '111111',
@@ -41,16 +41,16 @@ export default class Index extends Component {
         mode: 'cors',
         credentials: 'include',
         body: JSON.stringify({
+          role: this.state.role,
           className: this.state.className,
           name: this.state.name,
           pass: this.state.pass,
         }),
       });
       const data = await res.json();
-      console.log('data: ', data);
       if (data.status === 0) {
         dispatch(createAction('state/saveClass')(data));
-        if (this.state.loginMode === 'student') {
+        if (this.state.role === 'student') {
           dispatch(Navigator.navigate('Student'));
         } else {
           dispatch(Navigator.navigate('Teacher'));
@@ -72,8 +72,8 @@ export default class Index extends Component {
         </View>
 
         <Picker
-          selectedValue={this.state.loginMode}
-          onValueChange={lang => this.setState({ loginMode: lang })}
+          selectedValue={this.state.role}
+          onValueChange={lang => this.setState({ role: lang })}
           prompt="选择登录方式"
           mode="dialog"
         >
@@ -133,7 +133,7 @@ export default class Index extends Component {
 
         <TouchableOpacity
           style={styles.registered}
-          onPress={() => dispatch(Navigator.navigate('Teacher'))}
+          onPress={() => dispatch(Navigator.navigate('Register'))}
         >
           <Text style={styles.registeredFont}>没有账号？点击这里注册</Text>
         </TouchableOpacity>

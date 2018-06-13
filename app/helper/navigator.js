@@ -1,5 +1,7 @@
 import { NavigationActions } from 'react-navigation';
 
+export const baseURL = 'http://10.0.0.43:8080';
+
 export function dispatcher(props) {
   return props.dispatch || props.navigation.dispatch;
 }

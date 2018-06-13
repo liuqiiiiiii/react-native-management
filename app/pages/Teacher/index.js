@@ -9,7 +9,7 @@ import {
 import { connect } from 'react-redux';
 import { Icon } from 'react-native-elements';
 
-import Navigator, { dispatcher } from '../../helper/navigator';
+import Navigator, { dispatcher, baseURL } from '../../helper/navigator';
 import { createAction } from '../../helper';
 
 import Layout from '../../res/dimensions';
@@ -28,8 +28,8 @@ class Student extends Component {
 
   management = async () => {
     try {
-      console.log(`liuqi sb ${this.props.className}`);
-      let res = await fetch('http://10.0.0.43:8080/student/getall', {//eslint-disable-line
+      console.log(`tongyuehong sb teacher ${this.props.className}`);
+      let res = await fetch(`${baseURL}/teacher/get`, {//eslint-disable-line
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
@@ -38,7 +38,36 @@ class Student extends Component {
         }),
       });
       const data = await res.json();
-      console.log('data: ', data);
+      dispatch(createAction('classInformation/saveTeacher')(data));
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+    try {
+      console.log(`tongyuehong sb leader ${this.props.className}`);
+      let res = await fetch(`${baseURL}/student/getleader`, {//eslint-disable-line
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+        }),
+      });
+      const data = await res.json();
+      dispatch(createAction('classInformation/saveCadre')(data));
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+    try {
+      console.log(`tongyuehong sb students ${this.props.className}`);
+      let res = await fetch(`${baseURL}/student/getall`, {//eslint-disable-line
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+        }),
+      });
+      const data = await res.json();
       dispatch(createAction('classInformation/saveStudents')(data));
     } catch (e) {
       console.log(`error: ${e}`);
@@ -88,6 +117,7 @@ class Student extends Component {
         <View style={styles.arrangement}>
           <TouchableOpacity
             style={styles.card}
+            onPress={() => dispatch(Navigator.navigate('ReleaseAnnouncement'))}
           >
             <Icon
               containerStyle={styles.cardIcon}

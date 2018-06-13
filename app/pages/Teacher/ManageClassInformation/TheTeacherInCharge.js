@@ -17,10 +17,8 @@ function TheTeacherInCharge(props) {
       />
       <View style={styles.font}>
         <Text>姓名：{props.item.name}</Text>
-        <Text>性别：{props.item.gender}</Text>
-        <Text>QQ：{props.item.qq}</Text>
-        <Text>微信：{props.item.wechat}</Text>
-        <Text>手机：{props.item.mobilePhone}</Text>
+        <Text>性别：{props.item.sex}</Text>
+        <Text>手机：{props.item.phone}</Text>
         <Text>办公室：{props.item.office}</Text>
       </View>
     </View>
