@@ -25,14 +25,10 @@ class PersonalInformation extends Component {
     dispatch = dispatcher(this.props);
   
     this.state = {
-      image: null,
-      images: null,
-      onEdit: false,
       name: '',
       gender: '',
       phone: '',
       office: '',
-      edit: '提交',
       avatar: '"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528912784804&di=c51fa1594edbf1a4976f90ccbdb309b1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0df3d7ca7bcb0a46adc067026063f6246b60af2f.jpg"',
     };
   }
@@ -175,7 +171,7 @@ class PersonalInformation extends Component {
             raised
             buttonStyle={{ backgroundColor: 'lightcoral'}}
             icon={{name: 'code'}}
-            title={this.state.edit}
+            title="提交"
             onPress={this.management}
           />
         </View>

@@ -4,12 +4,16 @@ import {
   View,
   TextInput,
   ScrollView,
+  Alert,
 } from 'react-native';
 import { Button } from 'react-native-elements';
+import { connect } from 'react-redux';
+
+import { baseURL } from '../../../helper/navigator';
 
 import Layout from '../../../res/dimensions';
 
-class PersonalInformation extends Component {
+class AddAnnouncement extends Component {
   static navigationOptions = {
     header: null,
   }
@@ -17,26 +21,38 @@ class PersonalInformation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: '发布公告',
-      onEdit: true,
       title: '',
       content: '',
     };
   }
 
-  enableEdit = () => {
-    if (this.state.edit === '发布公告') {
-      this.setState({
-        edit: '发布公告',
+  handleSubmit = async () => {
+    try {
+      console.log(` sb students ${this.props.className}`);
+      let res = await fetch(`${baseURL}/message/publish`, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+          title: this.state.title,
+          content: this.state.content,
+        }),
       });
-    } else {
-      this.setState({
-        edit: '再次编辑',
-      });
+      const data = await res.json();
+      console.log('发布啊啊啊啊啊啊啊 ', data);
+      if (data.status === 0) {
+        Alert.alert(
+          '发布成功',
+        )
+      } else {
+        Alert.alert(
+          '发布失败',
+        )
+      }
+    } catch (e) {
+      console.log(`error: ${e}`);
     }
-    this.setState({
-      onEdit: !this.state.onEdit,
-    });
   }
 
   render() {
@@ -47,9 +63,8 @@ class PersonalInformation extends Component {
             style={styles.textInputTitle}
             placeholder="添加标题"
             autoFocus={true}
-            value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
+            value={this.state.title}
+            onChangeText={(title) => this.setState({ title })}
           />
 
           <View style={styles.content}>
@@ -58,9 +73,8 @@ class PersonalInformation extends Component {
               placeholder="添加文本内容"
               multiline={true}
               underlineColorAndroid="transparent"
-              value={this.state.name}
-              onChangeText={({ name }) => this.setState({ name })}
-              editable={this.state.onEdit}
+              value={this.state.content}
+              onChangeText={(content) => this.setState({ content })}
             />
           </View>
 
@@ -68,8 +82,8 @@ class PersonalInformation extends Component {
             raised
             buttonStyle={{ backgroundColor: '#F4A460'}}
             icon={{name: 'code'}}
-            title={this.state.edit}
-            onPress={this.enableEdit}
+            title="发布"
+            onPress={this.handleSubmit}
           />
         </View>
       </ScrollView>
@@ -108,5 +122,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
-export default PersonalInformation;
+export default connect(({ state }) => ({
+  ...state,
+}))(AddAnnouncement);
