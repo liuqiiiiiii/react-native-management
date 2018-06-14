@@ -66,19 +66,18 @@ class PersonalInformation extends Component {
     }
   }
 
-  updateAvatar = () => {
-    ImagePicker.openCamera({
-      cropping: cropping,
-      width: 500,
-      height: 500,
-      includeExif: true,
-    }).then(image => {
-      console.log('received image', image);
-      this.setState({
-        image: {uri: image.path, width: image.width, height: image.height},
-        images: null
+  updateAvatar = async () => {
+    try {
+      const image = await ImagePicker.openCamera({
+        cropping: true,
+        width: 500,
+        height: 500,
+        includeExif: true,
       });
-    }).catch(e => alert(e));
+      console.log(`${JSON.stringify({uri: image.path, width: image.width, height: image.height})}`);
+    } catch(e) {
+      alert(e)
+    }
   }
 
   render() {
