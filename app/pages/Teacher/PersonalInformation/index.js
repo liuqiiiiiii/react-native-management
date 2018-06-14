@@ -33,6 +33,7 @@ class PersonalInformation extends Component {
       phone: '',
       office: '',
       edit: '提交',
+      avatar: '"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528912784804&di=c51fa1594edbf1a4976f90ccbdb309b1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0df3d7ca7bcb0a46adc067026063f6246b60af2f.jpg"',
     };
   }
 
@@ -52,13 +53,13 @@ class PersonalInformation extends Component {
       });
       const data = await res.json();
       console.log('数据啊啊啊啊啊：', data);
-      if(data.status !== 0 ) {
+      if(data.status === 0 ) {
         Alert.alert(
-          '提交错误',
+          '提交成功',
         )
       } else {
         Alert.alert(
-          '提交成功',
+          '提交错误',
         )
       }
     } catch (e) {
@@ -70,11 +71,38 @@ class PersonalInformation extends Component {
     try {
       const image = await ImagePicker.openCamera({
         cropping: true,
+        includeBase64: true,
         width: 500,
         height: 500,
         includeExif: true,
       });
-      console.log(`${JSON.stringify({uri: image.path, width: image.width, height: image.height})}`);
+      console.log(`tongyuehong: ${image.data}`);
+
+      if (image.data) {
+        let res = await fetch(`${baseURL}/student/upavatar`, {
+          method: 'POST',
+          mode: 'cors',
+          credentials: 'include',
+          body: JSON.stringify({
+            name: this.props.loginName,
+            avatar: image.data,
+          }),
+        });
+        const data = await res.json();
+        console.log('数据啊啊啊啊啊：', data);
+        if(data.status === 0 ) {
+          Alert.alert(
+            '头像更改成功',
+          )
+          this.setState({
+            avatar: data.data
+          })
+        } else {
+          Alert.alert(
+            '头像更改失败',
+          )
+        }
+      }
     } catch(e) {
       alert(e)
     }
@@ -88,7 +116,7 @@ class PersonalInformation extends Component {
           <Avatar
             xlarge
             rounded
-            source={{ uri: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528912784804&di=c51fa1594edbf1a4976f90ccbdb309b1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0df3d7ca7bcb0a46adc067026063f6246b60af2f.jpg" }}
+            source={{ uri: this.state.avatar }}
             onPress={this.updateAvatar}
             activeOpacity={0.7}
           />

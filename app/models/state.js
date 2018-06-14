@@ -5,6 +5,7 @@ export default {
   state: {
     student: true,
     className: '',
+    loginName: '',
   },
 
   effects: {
@@ -14,6 +15,11 @@ export default {
 
     * switchToTeacher(payload, { put }) {
       yield put(createAction('update')({ student: false }));
+    },
+
+    * saveLoginName({ payload }, { put }) {
+      console.log(`state saveLoginName:${JSON.stringify(payload)}`);
+      yield put(createAction('update')({ loginName: payload }));
     },
 
     * saveClass({ payload }, { put }) {

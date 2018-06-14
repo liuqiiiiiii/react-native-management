@@ -49,6 +49,7 @@ export default class Index extends Component {
       });
       const data = await res.json();
       if (data.status === 0) {
+        dispatch(createAction('state/saveLoginName')(this.state.name));
         dispatch(createAction('state/saveClass')(data));
         if (this.state.role === 'student') {
           dispatch(Navigator.navigate('Student'));
