@@ -36,12 +36,12 @@
         "source": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_bottom.xml"
     },
     {
-        "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
-        "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_top.xml"
-    },
-    {
         "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/anim/catalyst_push_up_out.xml",
         "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.facebook.react/react-native/0.55.4/res/anim/catalyst_push_up_out.xml"
+    },
+    {
+        "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/anim/abc_slide_in_top.xml",
+        "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/anim/abc_slide_in_top.xml"
     },
     {
         "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/anim/abc_slide_out_top.xml",

@@ -16,24 +16,24 @@
         "source": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_textfield_activated_mtrl_alpha.9.png"
     },
     {
-        "merged": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png",
-        "source": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png"
+        "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_ic_menu_paste_mtrl_am_alpha.png",
+        "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_ic_menu_paste_mtrl_am_alpha.png"
     },
     {
         "merged": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_btn_rating_star_off_mtrl_alpha.png",
         "source": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_btn_rating_star_off_mtrl_alpha.png"
     },
     {
-        "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_ic_menu_paste_mtrl_am_alpha.png",
-        "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_ic_menu_paste_mtrl_am_alpha.png"
-    },
-    {
-        "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_btn_check_to_on_mtrl_015.png",
-        "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_btn_check_to_on_mtrl_015.png"
+        "merged": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png",
+        "source": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_ic_menu_moreoverflow_mtrl_alpha.png"
     },
     {
         "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_list_focused_holo.9.png",
         "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_list_focused_holo.9.png"
+    },
+    {
+        "merged": "/Users/a11/Github/react-native-management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_btn_check_to_on_mtrl_015.png",
+        "source": "/Users/a11/Github/react-native-management/android/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/23.0.1/res/drawable-xxhdpi/abc_btn_check_to_on_mtrl_015.png"
     },
     {
         "merged": "/Users/a11/Github/React-Native/management/android/app/build/intermediates/res/merged/debug/drawable-xxhdpi/abc_list_longpressed_holo.9.png",

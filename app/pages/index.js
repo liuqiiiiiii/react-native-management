@@ -133,7 +133,7 @@ export default class Index extends Component {
 
         <TouchableOpacity
           style={styles.registered}
-          onPress={() => dispatch(Navigator.navigate('Register'))}
+          onPress={() => dispatch(Navigator.navigate('Teacher'))}
         >
           <Text style={styles.registeredFont}>没有账号？点击这里注册</Text>
         </TouchableOpacity>

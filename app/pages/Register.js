@@ -45,7 +45,7 @@ class PersonalInformation extends Component {
       });
       const data = await res.json();
       console.log('register: ', data);
-      if (data.status !== 0) {
+      if (data.status === 0) {
         Alert.alert(
           '你输入的信息不正确，请重新输入',
         )

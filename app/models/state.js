@@ -6,10 +6,12 @@ export default {
     student: true,
     className: '',
   },
+
   effects: {
     * switchToStudent(payload, { put }) {
       yield put(createAction('update')({ student: true }));
     },
+
     * switchToTeacher(payload, { put }) {
       yield put(createAction('update')({ student: false }));
     },
@@ -18,6 +20,7 @@ export default {
       yield put(createAction('update')({ className: payload.data }));
     },
   },
+
   reducers: {
     update(state, { payload }) {
       return { ...state, ...payload };

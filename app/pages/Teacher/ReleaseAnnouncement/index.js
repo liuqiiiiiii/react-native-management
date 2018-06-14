@@ -8,6 +8,8 @@ import { SocialIcon } from 'react-native-elements';
 import { connect } from 'react-redux';
 
 import Navigator, { dispatcher } from '../../../helper/navigator';
+import { createAction } from '../../../helper';
+
 import AnnoucementTitle from './AnnoucementTitle';
 
 import Layout from '../../../res/dimensions';
@@ -18,15 +20,17 @@ class ReleaseAnnouncement extends Component {
   static navigationOptions = {
     header: null,
   }
+
   constructor(props) {
     super(props);
     dispatch = dispatcher(this.props);
   }
+
   render() {
     return (
       <View style={styles.global}>
         <TouchableOpacity
-          onPress={() => dispatch(Navigator.navigate('addAnnouncement'))}
+          onPress={() => dispatch(Navigator.navigate('AddAnnouncement'))}
         >
           <SocialIcon
             title="添加公告"
@@ -37,12 +41,19 @@ class ReleaseAnnouncement extends Component {
         </TouchableOpacity>
 
         {
-          this.props.title.map((item) => {
+          this.props.announce.map((item) => {
             return (
-              <AnnoucementTitle
-                key={item.id}
-                item={item}
-              />
+              <TouchableOpacity
+                onPress={() => {
+                  dispatch(createAction('annoucement/saveSelect')({ item }))
+                  dispatch(Navigator.navigate('AnnouncementContent'))
+                }}
+                key={`an-${item.id}`}
+              >
+                <AnnoucementTitle
+                  item={item}
+                />
+              </TouchableOpacity>
             );
           })
         }

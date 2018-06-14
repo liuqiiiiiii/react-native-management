@@ -19,8 +19,6 @@ function ClassCadre(props) {
         <Text>职务：{props.item.duty}</Text>
         <Text>姓名：{props.item.name}</Text>
         <Text>性别：{props.item.sex}</Text>
-        {/* <Text>年龄：{props.item.age}</Text> */}
-        {/* <Text>班级：{props.item.class}</Text> */}
         <Text>学号：{props.item.studentid}</Text>
         <Text>手机：{props.item.phone}</Text>
         <Text>地址：{props.item.address}</Text>

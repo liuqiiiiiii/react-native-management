@@ -8,6 +8,7 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { Avatar, Button } from 'react-native-elements';
+import ImagePicker from 'react-native-image-crop-picker';
 
 import Layout from '../../../res/dimensions';
 
@@ -19,13 +20,30 @@ class PersonalInformation extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      edit: '编辑以上信息',
+      image: null,
+      images: null,
       onEdit: false,
       name: '',
       gender: '',
       phone: '',
       office: '',
+      edit: '编辑以上信息',
     };
+  }
+
+  updateAvatar = () => {
+    ImagePicker.openCamera({
+      cropping: cropping,
+      width: 500,
+      height: 500,
+      includeExif: true,
+    }).then(image => {
+      console.log('received image', image);
+      this.setState({
+        image: {uri: image.path, width: image.width, height: image.height},
+        images: null
+      });
+    }).catch(e => alert(e));
   }
 
   enableEdit = () => {
@@ -42,7 +60,6 @@ class PersonalInformation extends Component {
       onEdit: !this.state.onEdit,
     });
   }
-
   render() {
     return (
       <ScrollView style={styles.global}>
@@ -51,18 +68,10 @@ class PersonalInformation extends Component {
           <Avatar
             xlarge
             rounded
-            source={{ uri: "https://avatars0.githubusercontent.com/u/32216634?s=460&v=4" }}
-            onPress={() => {}}
+            source={{ uri: "https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528912784804&di=c51fa1594edbf1a4976f90ccbdb309b1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0df3d7ca7bcb0a46adc067026063f6246b60af2f.jpg" }}
+            onPress={this.updateAvatar}
             activeOpacity={0.7}
           />
-          <View style={{ marginTop: Layout.Height(40) }}>
-            <Button
-              raised
-              buttonStyle={{ backgroundColor: 'lightcoral'}}
-              icon={{name: 'cached'}}
-              title='更改头像'
-            />
-          </View>
         </View>
 
         <View style={styles.input}>
