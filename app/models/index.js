@@ -2,7 +2,7 @@ import init from './init';
 import router from './router';
 import state from './state';
 import classInformation from './classInformation';
-import annoucement from './annoucement';
+import announcement from './announcement';
 import personalInformation from './PersonalInformation';
 
 export const Models = [
@@ -10,6 +10,6 @@ export const Models = [
   router,
   state,
   classInformation,
-  annoucement,
+  announcement,
   personalInformation,
 ];

@@ -46,7 +46,7 @@ class ReleaseAnnouncement extends Component {
               <TouchableOpacity
                 onPress={() => {
                   dispatch(createAction('annoucement/saveSelect')({ item }))
-                  dispatch(Navigator.navigate('AnnouncementContent'))
+                  dispatch(Navigator.navigate('DisplayAnnouncement'))
                 }}
                 key={`an-${item.id}`}
               >

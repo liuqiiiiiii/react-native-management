@@ -5,13 +5,13 @@ export default {
   state: {
     announce: [],
 
-    selectedMessage: [],
+    selectedMessage: {},
   },
 
   effects: {
     * saveMessages({ payload }, { put }) {
       console.log(`saveMessages ${JSON.stringify(payload.data)}`);
-      yield put(createAction('update')({ title: payload.data }));
+      yield put(createAction('update')({ announce: payload.data }));
     },
   
     * saveSelect({ payload }, { put }) {

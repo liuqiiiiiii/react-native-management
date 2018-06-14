@@ -2,73 +2,70 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   View,
-  TouchableOpacity,
+  Text,
+  ScrollView,
 } from 'react-native';
-import { SocialIcon } from 'react-native-elements';
 import { connect } from 'react-redux';
-
-import Navigator, { dispatcher } from '../../../helper/navigator';
-import { createAction } from '../../../helper';
-
-import AnnoucementTitle from './AnnoucementTitle';
 
 import Layout from '../../../res/dimensions';
 
-let dispatch;
-
-class ReleaseAnnouncement extends Component {
+class DisplayAnnouncement extends Component {
   static navigationOptions = {
     header: null,
   }
 
   constructor(props) {
     super(props);
-    dispatch = dispatcher(this.props);
+    this.state = {};
   }
 
   render() {
     return (
-      <View style={styles.global}>
-        <TouchableOpacity
-          onPress={() => dispatch(Navigator.navigate('addAnnouncement'))}
-        >
-          <SocialIcon
-            title="添加公告"
-            button
-            type="envelope"
-            light
-          />
-        </TouchableOpacity>
+      <ScrollView
+        style={styles.global}
+        showsVerticalScrollIndicator={false}
+      >
+        <View style={styles.title}>
+          <Text style={styles.titleFont}>{this.props.selectedMessage.title}</Text>
+        </View>
 
-        {
-          this.props.announce.map((item) => {
-            return (
-              <TouchableOpacity
-                onPress={() => {
-                  dispatch(createAction('annoucement/saveSelect')({ item }))
-                  dispatch(Navigator.navigate('AnnouncementContent'))
-                }}
-                key={`an-${item.id}`}
-              >
-                <AnnoucementTitle
-                  item={item}
-                />
-              </TouchableOpacity>
-            );
-          })
-        }
-      </View>
+        <View style={styles.content}>
+          <Text style={styles.contentFont}>
+            {this.props.selectedMessage.content}
+          </Text>
+        </View>
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   global: {
-    marginBottom: Layout.Height(10),
-    paddingTop: Layout.Height(60),
+    marginVertical: Layout.Height(40),
+    marginHorizontal: Layout.Width(40),
+  },
+  time: {
+    marginBottom: Layout.Height(40),
+  },
+  timeFont: {
+    fontSize: 16,
+  },
+  title: {
+    marginBottom: Layout.Height(40),
+  },
+  titleFont: {
+    fontSize: 30,
+    color: '#000000', //black
+  },
+  content: {
+  },
+  contentFont: {
+    fontSize: 18,
+    lineHeight: 28,
   },
 });
 
+
 export default connect(({ annoucement }) => ({
   ...annoucement,
-}))(ReleaseAnnouncement);
+}))(DisplayAnnouncement);

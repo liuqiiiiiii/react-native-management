@@ -75,6 +75,25 @@ class Student extends Component {
     dispatch(Navigator.navigate('ManageClassInformation'));
   }
 
+  managementAnnounce = async () => {
+    try {
+      let res = await fetch(`${baseURL}/message/show`, {//eslint-disable-line
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+        }),
+      });
+      const data = await res.json();
+      console.log(`hhhh->${JSON.stringify(data)}`);
+      dispatch(createAction('annoucement/saveMessages')(data));
+      dispatch(Navigator.navigate('ReleaseAnnouncement'));
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+  }
+
   render() {
     return (
       <ScrollView style={styles.global}>
@@ -117,7 +136,7 @@ class Student extends Component {
         <View style={styles.arrangement}>
           <TouchableOpacity
             style={styles.card}
-            onPress={() => dispatch(Navigator.navigate('ReleaseAnnouncement'))}
+            onPress={this.managementAnnounce}
           >
             <Icon
               containerStyle={styles.cardIcon}
@@ -188,7 +207,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(({ classInformation, state }) => ({
+export default connect(({ classInformation, announcement, state }) => ({
   ...classInformation,
+  ...announcement,
   ...state,
 }))(Student);
