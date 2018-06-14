@@ -17,6 +17,7 @@ export default {
     },
 
     * saveClass({ payload }, { put }) {
+      console.log(`state saveClass:${JSON.stringify(payload)}`);
       yield put(createAction('update')({ className: payload.data }));
     },
   },

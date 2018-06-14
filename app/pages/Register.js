@@ -32,7 +32,7 @@ class PersonalInformation extends Component {
     const dispatch = dispatcher(this.props);
 
     try {
-      let res = await fetch(`${baseURL}/user/register`, {//eslint-disable-line
+      let res = await fetch(`${baseURL}/user/register`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
@@ -46,11 +46,11 @@ class PersonalInformation extends Component {
       const data = await res.json();
       console.log('register: ', data);
       if (data.status === 0) {
+        dispatch(Navigator.navigate('Main'));
+      } else {
         Alert.alert(
           '你输入的信息不正确，请重新输入',
         )
-      } else {
-        dispatch(Navigator.navigate('Main'));
       }
     } catch (e) {
       console.log(`error: ${e}`);
