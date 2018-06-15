@@ -3,7 +3,7 @@ import router from './router';
 import state from './state';
 import classInformation from './classInformation';
 import announcement from './announcement';
-import personalInformation from './PersonalInformation';
+import personalInformation from './personalInformation';
 
 export const Models = [
   init,

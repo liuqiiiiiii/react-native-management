@@ -10,6 +10,7 @@ import {
 import { Avatar, Button } from 'react-native-elements';
 import ImagePicker from 'react-native-image-crop-picker';
 import { connect } from 'react-redux';
+
 import { dispatcher, baseURL } from '../../../helper/navigator';
 
 import Layout from '../../../res/dimensions';
@@ -25,42 +26,12 @@ class PersonalInformation extends Component {
     dispatch = dispatcher(this.props);
   
     this.state = {
-      name: '',
-      gender: '',
-      phone: '',
-      office: '',
-      avatar: '"https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528912784804&di=c51fa1594edbf1a4976f90ccbdb309b1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0df3d7ca7bcb0a46adc067026063f6246b60af2f.jpg"',
+      avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528912784804&di=c51fa1594edbf1a4976f90ccbdb309b1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0df3d7ca7bcb0a46adc067026063f6246b60af2f.jpg',
+      name: this.props.teacherInformation[0].name,
+      gender: this.props.teacherInformation[0].gender,
+      phone: this.props.teacherInformation[0].phone,
+      office: this.props.teacherInformation[0].office,
     };
-  }
-
-  management = async () => {
-    try {
-      let res = await fetch(`${baseURL}/teacher/change`, {
-        method: 'POST',
-        mode: 'cors',
-        credentials: 'include',
-        body: JSON.stringify({
-          className: this.props.className,
-          name: this.state.name,
-          gender: this.state.gender,
-          phone: this.state.phone,
-          office: this.state.office,
-        }),
-      });
-      const data = await res.json();
-      console.log('数据啊啊啊啊啊：', data);
-      if(data.status === 0 ) {
-        Alert.alert(
-          '提交成功',
-        )
-      } else {
-        Alert.alert(
-          '提交错误',
-        )
-      }
-    } catch (e) {
-      console.log(`error: ${e}`);
-    }
   }
 
   updateAvatar = async () => {
@@ -101,6 +72,37 @@ class PersonalInformation extends Component {
       }
     } catch(e) {
       alert(e)
+    }
+  }
+
+  management = async () => {
+    console.log(`输出model：${this.props.name}`);
+    try {
+      let res = await fetch(`${baseURL}/teacher/change`, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+          name: this.state.name,
+          gender: this.state.gender,
+          phone: this.state.phone,
+          office: this.state.office,
+        }),
+      });
+      const data = await res.json();
+      console.log('数据啊啊啊啊啊：', data);
+      if(data.status === 0 ) {
+        Alert.alert(
+          '提交成功',
+        )
+      } else {
+        Alert.alert(
+          '提交错误',
+        )
+      }
+    } catch (e) {
+      console.log(`error: ${e}`);
     }
   }
 
@@ -216,6 +218,7 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(({ state }) => ({
+export default connect(({ state, personalInformation }) => ({
   ...state,
+  ...personalInformation,
 }))(PersonalInformation);

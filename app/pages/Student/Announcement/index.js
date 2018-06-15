@@ -6,7 +6,6 @@ import { connect } from 'react-redux';
 
 import Navigator, { dispatcher } from '../../../helper/navigator';
 import { createAction } from '../../../helper';
-import AnnoucementTitle from '../../Teacher/ReleaseAnnouncement/AnnoucementTitle';
 
 let dispatch;
 
@@ -25,12 +24,12 @@ class ReleaseAnnouncement extends Component {
       return (
         <TouchableOpacity
           onPress={() => {
-            dispatch(createAction('annoucement/saveSelect')({ item }))
+            dispatch(createAction('announcement/saveSelect')({ item }))
             dispatch(Navigator.navigate('AnnouncementContent'))
           }}
           key={`an-${item.id}`}
         >
-          <AnnoucementTitle
+          <AnnouncementTitle
             item={item}
           />
         </TouchableOpacity>
@@ -39,6 +38,6 @@ class ReleaseAnnouncement extends Component {
   }
 }
 
-export default connect(({ annoucement }) => ({
-  ...annoucement,
+export default connect(({ announcement }) => ({
+  ...announcement,
 }))(ReleaseAnnouncement);

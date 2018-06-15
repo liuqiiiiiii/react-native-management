@@ -41,7 +41,7 @@ class ManageClassInformation extends Component {
             this.props.theTeacherInCharge.map((item) => {
               return (
                 <TheTeacherInCharge
-                  key={`student${item.id}`}
+                  key={`teacher${item.id}`}
                   item={item}
                 />
               );
@@ -57,7 +57,7 @@ class ManageClassInformation extends Component {
             this.props.classCadre.map((item) => {
               return (
                 <ClassCadre
-                  key={`student${item.id}`}
+                  key={`cadre${item.id}`}
                   item={item}
                 />
               );

@@ -13,11 +13,11 @@ function TheTeacherInCharge(props) {
     <View style={styles.card}>
       <Image
         style={styles.image}
-        source={{ uri: props.item.image }}
+        source={{ uri: props.item.avatar }}
       />
       <View style={styles.font}>
         <Text>姓名：{props.item.name}</Text>
-        <Text>性别：{props.item.sex}</Text>
+        <Text>性别：{props.item.gender}</Text>
         <Text>手机：{props.item.phone}</Text>
         <Text>办公室：{props.item.office}</Text>
       </View>

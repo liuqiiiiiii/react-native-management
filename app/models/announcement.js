@@ -1,7 +1,7 @@
 import { createAction } from '../helper';
 
 export default {
-  namespace: 'annoucement',
+  namespace: 'announcement',
   state: {
     announce: [],
 

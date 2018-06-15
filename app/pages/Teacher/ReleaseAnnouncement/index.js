@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  View,
+  ScrollView,
   TouchableOpacity,
 } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
@@ -10,7 +10,7 @@ import { connect } from 'react-redux';
 import Navigator, { dispatcher } from '../../../helper/navigator';
 import { createAction } from '../../../helper';
 
-import AnnoucementTitle from './AnnoucementTitle';
+import AnnouncementTitle from './AnnouncementTitle';
 
 import Layout from '../../../res/dimensions';
 
@@ -28,7 +28,7 @@ class ReleaseAnnouncement extends Component {
 
   render() {
     return (
-      <View style={styles.global}>
+      <ScrollView style={styles.global}>
         <TouchableOpacity
           onPress={() => dispatch(Navigator.navigate('AddAnnouncement'))}
         >
@@ -45,19 +45,19 @@ class ReleaseAnnouncement extends Component {
             return (
               <TouchableOpacity
                 onPress={() => {
-                  dispatch(createAction('annoucement/saveSelect')({ item }))
+                  dispatch(createAction('announcement/saveSelect')({ item }))
                   dispatch(Navigator.navigate('DisplayAnnouncement'))
                 }}
                 key={`an-${item.id}`}
               >
-                <AnnoucementTitle
+                <AnnouncementTitle
                   item={item}
                 />
               </TouchableOpacity>
             );
           })
         }
-      </View>
+      </ScrollView>
     );
   }
 }
@@ -69,6 +69,6 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(({ annoucement }) => ({
-  ...annoucement,
+export default connect(({ announcement }) => ({
+  ...announcement,
 }))(ReleaseAnnouncement);

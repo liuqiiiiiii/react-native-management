@@ -2,7 +2,7 @@ import React from 'react';
 import { View } from 'react-native';
 import { SocialIcon } from 'react-native-elements';
 
-function AnnoucementTitle(props) {
+function AnnouncementTitle(props) {
   return (
     <View>
       <SocialIcon
@@ -15,4 +15,4 @@ function AnnoucementTitle(props) {
   );
 }
 
-export default AnnoucementTitle;
+export default AnnouncementTitle;

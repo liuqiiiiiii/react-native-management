@@ -26,7 +26,29 @@ class Student extends Component {
     dispatch = dispatcher(this.props);
   }
 
-  management = async () => {
+  managePersonalInformation = async () => {
+    try {
+      let res = await fetch(`${baseURL}/teacher/get`, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+        }),
+      });
+      const data = await res.json();
+      console.log(`传进来的是：${JSON.stringify(data)}`);
+      if (data.data) {
+      dispatch(createAction('personalInformation/saveTeacherPersonal')(data));
+      console.log(data);
+      };
+      dispatch(Navigator.navigate('TeacherPersonalInformation'));
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+  }
+
+  manageClassInformation = async () => {
     try {
       console.log(`tongyuehong sb teacher ${this.props.className}`);
       let res = await fetch(`${baseURL}/teacher/get`, {//eslint-disable-line
@@ -38,10 +60,13 @@ class Student extends Component {
         }),
       });
       const data = await res.json();
-      dispatch(createAction('classInformation/saveTeacher')(data));
+      if (data.data) {
+        dispatch(createAction('classInformation/saveTeacher')(data));
+      }
     } catch (e) {
       console.log(`error: ${e}`);
     }
+
     try {
       console.log(`tongyuehong sb leader ${this.props.className}`);
       let res = await fetch(`${baseURL}/student/getleader`, {//eslint-disable-line
@@ -57,6 +82,7 @@ class Student extends Component {
     } catch (e) {
       console.log(`error: ${e}`);
     }
+
     try {
       console.log(`tongyuehong sb students ${this.props.className}`);
       let res = await fetch(`${baseURL}/student/getall`, {//eslint-disable-line
@@ -86,8 +112,8 @@ class Student extends Component {
         }),
       });
       const data = await res.json();
-      console.log(`hhhh->${JSON.stringify(data)}`);
-      dispatch(createAction('annoucement/saveMessages')(data));
+      console.log(`liuqiliuqi->${JSON.stringify(data)}`);
+      dispatch(createAction('announcement/saveMessages')(data));
       dispatch(Navigator.navigate('ReleaseAnnouncement'));
     } catch (e) {
       console.log(`error: ${e}`);
@@ -103,7 +129,7 @@ class Student extends Component {
 
         <View style={styles.arrangement}>
           <TouchableOpacity
-            onPress={() => dispatch(Navigator.navigate('TeacherPersonalInformation'))}
+            onPress={this.managePersonalInformation}
             style={styles.card}
           >
             <Icon
@@ -118,7 +144,7 @@ class Student extends Component {
           </TouchableOpacity>
 
           <TouchableOpacity
-            onPress={this.management}
+            onPress={this.manageClassInformation}
             style={styles.card}
           >
             <Icon
@@ -207,7 +233,8 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(({ classInformation, announcement, state }) => ({
+export default connect(({ classInformation, announcement, state, personalInformation }) => ({
+  ...personalInformation,
   ...classInformation,
   ...announcement,
   ...state,

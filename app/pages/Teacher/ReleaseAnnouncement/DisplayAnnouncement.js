@@ -66,6 +66,6 @@ const styles = StyleSheet.create({
 });
 
 
-export default connect(({ annoucement }) => ({
-  ...annoucement,
+export default connect(({ announcement }) => ({
+  ...announcement,
 }))(DisplayAnnouncement);
