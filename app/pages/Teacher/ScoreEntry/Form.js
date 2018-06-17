@@ -7,101 +7,40 @@ import {
   TextInput,
   TouchableOpacity,
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
 
 import Layout from '../../../res/dimensions';
 
-class PersonalInformation extends Component {
-  static navigationOptions = {
-    header: null,
-  }
-  constructor(props) {
-    super(props);
-    this.state = {
-      edit: '编辑',
-      onEdit: false,
-      name: '刘琦',
-      gender: '男',
-      QQ: '982252163',
-      wechat: 'liuqi982252163',
-      phone: '18331295996',
-      address: '一校区单身楼613',
-    };
-  }
-  enableEdit = () => {
-    if (this.state.edit === '编辑') {
-      this.setState({
-        edit: '完成',
-      });
-    } else {
-      this.setState({
-        edit: '编辑',
-      });
-    }
-    this.setState({
-      onEdit: !this.state.onEdit,
-    });
-  }
-  render() {
-    return (
-      <ScrollView style={styles.global}>
-        <View style={styles.edit}>
-          <TouchableOpacity
-            onPress={this.enableEdit}
-          >
-            <Text style={styles.editFont}>{this.state.edit}</Text>
-          </TouchableOpacity>
-        </View>
-
-        <View style={styles.input}>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
-          />
-          <TextInput
-            style={styles.textInput}
-            value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
-          />
-          <TextInput
-            style={styles.textInput}
-            value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
-          />
-        </View>
-      </ScrollView>
-    );
-  }
+function Form(props) {
+  return (
+    <View style={styles.global}>
+      <Text style={styles.name}>{props.item.name}</Text>
+      <Text style={styles.class}>{props.item.class}</Text>
+      <Text style={styles.subject}>{props.item.subject}</Text>
+      <Text style={styles.grade}>{props.item.grade}</Text>
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
   global: {
-    paddingTop: Layout.Height(40),
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderWidth: 1,
+    borderColor: 'lightgray',
+    padding: Layout.Height(10),
   },
-  edit: {
-    marginRight: Layout.Width(40),
+  name: {
+    color: 'red',
   },
-  editFont: {
-    textAlign: 'right',
-    fontSize: 18,
+  class: {
+    color: 'orange',
   },
-  avatar: {
-    alignItems: 'center',
-    marginBottom: Layout.Height(20),
+  subject: {
+    color: 'green',
   },
-  inputTitle: {
-    marginHorizontal: Layout.Width(40),
-  },
-  inputFont: {
-    fontSize: 20,
-    color: '#F08080',
-  },
-  textInput: {
-    width: Layout.Width(300),
-    fontSize: 20,
+  grade: {
+    color: 'blue',
   },
 });
+
+export default Form;

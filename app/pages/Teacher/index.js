@@ -120,6 +120,25 @@ class Student extends Component {
     }
   }
 
+  managementScore = async () => {
+    try {
+      let res = await fetch(`${baseURL}/grade/all`, {//eslint-disable-line
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+        }),
+      });
+      const data = await res.json();
+      console.log(`liuqiiiiiiii->${JSON.stringify(data)}`);
+      dispatch(createAction('score/saveScore')(data));
+      dispatch(Navigator.navigate('ScoreEntry'));
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+  }
+
   render() {
     return (
       <ScrollView style={styles.global}>
@@ -177,7 +196,7 @@ class Student extends Component {
 
           <TouchableOpacity
             style={styles.card}
-            onPress={() => dispatch(Navigator.navigate('ScoreEntry'))}
+            onPress={this.managementScore}
           >
             <Icon
               containerStyle={styles.cardIcon}
@@ -233,9 +252,10 @@ const styles = StyleSheet.create({
   },
 });
 
-export default connect(({ classInformation, announcement, state, personalInformation }) => ({
+export default connect(({ classInformation, announcement, state, personalInformation, score }) => ({
   ...personalInformation,
   ...classInformation,
   ...announcement,
   ...state,
+  ...score,
 }))(Student);

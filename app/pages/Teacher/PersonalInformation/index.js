@@ -22,11 +22,9 @@ class PersonalInformation extends Component {
 
   constructor(props) {
     super(props);
-
     dispatch = dispatcher(this.props);
-  
     this.state = {
-      avatar: 'https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1528912784804&di=c51fa1594edbf1a4976f90ccbdb309b1&imgtype=0&src=http%3A%2F%2Fimgsrc.baidu.com%2Fimgad%2Fpic%2Fitem%2F0df3d7ca7bcb0a46adc067026063f6246b60af2f.jpg',
+      avatar: this.props.teacherInformation[0].avatar,
       name: this.props.teacherInformation[0].name,
       gender: this.props.teacherInformation[0].gender,
       phone: this.props.teacherInformation[0].phone,
@@ -46,7 +44,7 @@ class PersonalInformation extends Component {
       console.log(`tongyuehong: ${image.data}`);
 
       if (image.data) {
-        let res = await fetch(`${baseURL}/student/upavatar`, {
+        let res = await fetch(`${baseURL}/teacher/upavatar`, {
           method: 'POST',
           mode: 'cors',
           credentials: 'include',

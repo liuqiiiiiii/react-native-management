@@ -4,75 +4,40 @@ import {
   View,
   Text,
   ScrollView,
-  TextInput,
-  TouchableOpacity,
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { connect } from 'react-redux';
 
+import Form from './Form';
 import Layout from '../../../res/dimensions';
 
-class PersonalInformation extends Component {
+class ScoreEntry extends Component {
   static navigationOptions = {
     header: null,
-  }
-  constructor(props) {
-    super(props);
-    this.state = {
-      edit: '编辑',
-      onEdit: false,
-      name: '刘琦',
-      gender: '男',
-      QQ: '982252163',
-      wechat: 'liuqi982252163',
-      phone: '18331295996',
-      address: '一校区单身楼613',
-    };
-  }
-  enableEdit = () => {
-    if (this.state.edit === '编辑') {
-      this.setState({
-        edit: '完成',
-      });
-    } else {
-      this.setState({
-        edit: '编辑',
-      });
-    }
-    this.setState({
-      onEdit: !this.state.onEdit,
-    });
   }
   render() {
     return (
       <ScrollView style={styles.global}>
-        <View style={styles.edit}>
-          <TouchableOpacity
-            onPress={this.enableEdit}
-          >
-            <Text style={styles.editFont}>{this.state.edit}</Text>
-          </TouchableOpacity>
+        <View style={styles.top}>
+          <Text style={styles.topFont}>成绩录入</Text>
         </View>
 
-        <View style={styles.input}>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
-          />
-          <TextInput
-            style={styles.textInput}
-            value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
-          />
-          <TextInput
-            style={styles.textInput}
-            value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
-          />
+        <View style={styles.titleBar}>
+      <Text style={styles.name}>姓名</Text>
+      <Text style={styles.class}>班级</Text>
+      <Text style={styles.subject}>科目</Text>
+      <Text style={styles.grade}>分数</Text>
         </View>
+
+        {
+          this.props.classScore.map((item) => {
+            return (
+              <Form
+                key={`liuqi${item.id}`}
+                item={item}
+              />
+            );
+          })
+        }
       </ScrollView>
     );
   }
@@ -80,31 +45,39 @@ class PersonalInformation extends Component {
 
 const styles = StyleSheet.create({
   global: {
-    paddingTop: Layout.Height(40),
+    paddingHorizontal: Layout.Width(40),
   },
-  edit: {
-    marginRight: Layout.Width(40),
-  },
-  editFont: {
-    textAlign: 'right',
-    fontSize: 18,
-  },
-  avatar: {
+  top: {
+    marginTop: Layout.Width(40),
+    justifyContent: 'center',
     alignItems: 'center',
-    marginBottom: Layout.Height(20),
   },
-  inputTitle: {
-    marginHorizontal: Layout.Width(40),
+  topFont: {
+    fontSize: 28,
   },
-  inputFont: {
-    fontSize: 20,
-    color: '#F08080',
+  titleBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderBottomWidth: 1,
+    borderColor: 'lightgray',
+    marginTop: Layout.Height(40),
+    paddingBottom: Layout.Height(20),
   },
-  textInput: {
-    width: Layout.Width(300),
-    fontSize: 20,
+  name: {
+    color: 'red',
+  },
+  class: {
+    color: 'orange',
+  },
+  subject: {
+    color: 'green',
+  },
+  grade: {
+    color: 'blue',
   },
 });
 
 
-export default PersonalInformation;
+export default connect(({ score }) => ({
+  ...score,
+}))(ScoreEntry);

@@ -7,15 +7,12 @@ import {
   TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
-import Navigator, { dispatcher } from '../../../helper/navigator';
 
 import TheTeacherInCharge from './TheTeacherInCharge';
 import ClassCadre from './ClassCadre';
 import Classmate from './Classmate';
 
 import Layout from '../../../res/dimensions';
-
-let dispatch;
 
 class ManageClassInformation extends Component {
   static navigationOptions = {
@@ -24,9 +21,9 @@ class ManageClassInformation extends Component {
 
   constructor(props) {
     super(props);
-    dispatch = dispatcher(this.props);
     this.state = {};
   }
+
   render() {
     return (
       <ScrollView>
@@ -34,7 +31,6 @@ class ManageClassInformation extends Component {
           <Text style={styles.classFont}>班主任</Text>
         </View>
         <TouchableOpacity
-            onPress={() => dispatch(Navigator.navigate('TeacherPersonalInformation'))}
           style={styles.card}
         >
           {

@@ -26,7 +26,7 @@ export default class Index extends Component {
     super(props);
     dispatch = dispatcher(this.props);
     this.state = {
-      role: 'teacher',
+      role: 'student',
       className: '计算机专业',
       name: '仝月虹',
       pass: '111111',
