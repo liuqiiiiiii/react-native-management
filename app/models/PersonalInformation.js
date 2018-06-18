@@ -5,7 +5,7 @@ export default {
   state: {
     teacherInformation: [],
 
-    studentInformation: [],
+    studentsInformation: [],
   },
 
   effects: {
@@ -15,8 +15,8 @@ export default {
     },
 
     * saveStudentsPersonal({ payload }, { put }) {
-      console.log(`saveStudents ${JSON.stringify(payload.data)}`);
-      yield put(createAction('update')({ studentInformation: payload.data }));
+      console.log(`saveStudentsPersonal ${JSON.stringify(payload.data)}`);
+      yield put(createAction('update')({ studentsInformation: payload.data }));
     },
   },
 

@@ -5,9 +5,13 @@ import {
   Text,
   ScrollView,
   TextInput,
-  TouchableOpacity,
+  Alert, 
 } from 'react-native';
-import { Avatar } from 'react-native-elements';
+import { Avatar, Button } from 'react-native-elements';
+import ImagePicker from 'react-native-image-crop-picker';
+import { connect } from 'react-redux';
+
+import { dispatcher, baseURL } from '../../../helper/navigator';
 
 import Layout from '../../../res/dimensions';
 
@@ -15,49 +19,100 @@ class PersonalInformation extends Component {
   static navigationOptions = {
     header: null,
   }
+
   constructor(props) {
     super(props);
+    dispatch = dispatcher(this.props);
     this.state = {
-      edit: '编辑',
-      onEdit: false,
-      name: '仝月虹',
-      gender: '女',
-      classroom: '计算机14k2班',
-      number: '141909010217',
-      phone: '18331295996',
+      avatar: this.props.studentsInformation[0].avatar,
+      name: this.props.studentsInformation[0].name,
+      studentid: this.props.studentsInformation[0].studentid,
+      phone: this.props.studentsInformation[0].phone,
+      address: this.props.studentsInformation[0].address,
     };
   }
-  enableEdit = () => {
-    if (this.state.edit === '编辑') {
-      this.setState({
-        edit: '完成',
+
+  updateAvatar = async () => {
+    try {
+      const image = await ImagePicker.openCamera({
+        cropping: true,
+        includeBase64: true,
+        width: 500,
+        height: 500,
+        includeExif: true,
       });
-    } else {
-      this.setState({
-        edit: '编辑',
-      });
+      console.log(`tongyuehong: ${image.data}`);
+
+      if (image.data) {
+        let res = await fetch(`${baseURL}/student/upavatar`, {
+          method: 'POST',
+          mode: 'cors',
+          credentials: 'include',
+          body: JSON.stringify({
+            name: this.props.loginName,
+            avatar: image.data,
+          }),
+        });
+        const data = await res.json();
+        console.log('数据啊啊啊啊啊：', data);
+        if(data.status === 0 ) {
+          Alert.alert(
+            '头像更改成功',
+          )
+          this.setState({
+            avatar: data.data
+          })
+        } else {
+          Alert.alert(
+            '头像更改失败',
+          )
+        }
+      }
+    } catch(e) {
+      alert(e)
     }
-    this.setState({
-      onEdit: !this.state.onEdit,
-    });
   }
+
+  management = async () => {
+    console.log(`输出model：${this.props.name}`);
+    try {
+      let res = await fetch(`${baseURL}/student/change`, {
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+          name: this.state.name,
+          sex: this.state.sex,
+          phone: this.state.phone,
+          address: this.state.address,
+        }),
+      });
+      const data = await res.json();
+      console.log('数据啊啊啊啊啊：', data);
+      if(data.status === 0 ) {
+        Alert.alert(
+          '提交成功',
+        )
+      } else {
+        Alert.alert(
+          '提交错误',
+        )
+      }
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+  }
+
   render() {
     return (
       <ScrollView style={styles.global}>
-        <View style={styles.edit}>
-          <TouchableOpacity
-            onPress={this.enableEdit}
-          >
-            <Text style={styles.editFont}>{this.state.edit}</Text>
-          </TouchableOpacity>
-        </View>
-
         <View style={styles.avatar}>
           <Avatar
             xlarge
             rounded
-            source={{ uri: "https://ss0.bdstatic.com/70cFuHSh_Q1YnxGkpoWK1HF6hhy/it/u=1816149448,27813852&fm=27&gp=0.jpg" }}
-            onPress={() => {}}
+            source={{ uri: this.state.avatar }}
+            onPress={this.updateAvatar}
             activeOpacity={0.7}
           />
         </View>
@@ -68,33 +123,9 @@ class PersonalInformation extends Component {
           </View>
           <TextInput
             style={styles.textInput}
+            placeholder="点击编辑"
             value={this.state.name}
-            onChangeText={({ name }) => this.setState({ name })}
-            editable={this.state.onEdit}
-          />
-        </View>
-
-        <View style={styles.input}>
-          <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>性别</Text>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.gender}
-            onChangeText={({ gender }) => this.setState({ gender })}
-            editable={this.state.onEdit}
-          />
-        </View>
-
-        <View style={styles.input}>
-          <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>班级</Text>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.classroom}
-            onChangeText={({ classroom }) => this.setState({ classroom })}
-            editable={this.state.onEdit}
+            onChangeText={(name) => this.setState({ name })}
           />
         </View>
 
@@ -104,21 +135,43 @@ class PersonalInformation extends Component {
           </View>
           <TextInput
             style={styles.textInput}
-            value={this.state.number}
-            onChangeText={({ number }) => this.setState({ number })}
-            editable={this.state.onEdit}
+            placeholder="点击编辑"
+            value={this.state.studentid}
+            onChangeText={(studentid) => this.setState({ studentid })}
           />
         </View>
 
         <View style={styles.input}>
           <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>手机</Text>
+            <Text style={styles.inputFont}>手机号</Text>
           </View>
           <TextInput
             style={styles.textInput}
+            placeholder="点击编辑"
             value={this.state.phone}
-            onChangeText={({ phone }) => this.setState({ phone })}
-            editable={this.state.onEdit}
+            onChangeText={(phone) => this.setState({ phone })}
+          />
+        </View>
+
+        <View style={styles.input}>
+          <View style={styles.inputTitle}>
+            <Text style={styles.inputFont}>地址</Text>
+          </View>
+          <TextInput
+            style={styles.textInput}
+            placeholder="点击编辑"
+            value={this.state.address}
+            onChangeText={(address) => this.setState({ address })}
+          />
+        </View>
+
+        <View style={styles.edit}>
+          <Button
+            raised
+            buttonStyle={{ backgroundColor: 'lightcoral'}}
+            icon={{name: 'code'}}
+            title="提交"
+            onPress={this.management}
           />
         </View>
       </ScrollView>
@@ -128,10 +181,11 @@ class PersonalInformation extends Component {
 
 const styles = StyleSheet.create({
   global: {
-    paddingTop: Layout.Height(40),
+    paddingVertical: Layout.Height(40),
   },
   edit: {
-    marginRight: Layout.Width(40),
+    paddingHorizontal: Layout.Width(100),
+    marginBottom: Layout.Height(20),
   },
   editFont: {
     textAlign: 'right',
@@ -145,7 +199,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     justifyContent: 'center',
-    marginTop: Layout.Height(20),
+    marginBottom: Layout.Height(20),
   },
   inputTitle: {
     marginHorizontal: Layout.Width(40),
@@ -156,9 +210,12 @@ const styles = StyleSheet.create({
   },
   textInput: {
     width: Layout.Width(300),
-    fontSize: 20,
+    fontSize: 16,
   },
 });
 
 
-export default PersonalInformation;
+export default connect(({ state, personalInformation }) => ({
+  ...state,
+  ...personalInformation,
+}))(PersonalInformation);

@@ -2,10 +2,15 @@ import React, { Component } from 'react';
 import {
   StyleSheet,
   Text,
-  TouchableOpacity,
+  View,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
+
+import TheTeacherInCharge from '../../Teacher/ManageClassInformation/TheTeacherInCharge';
+import ClassCadre from '../../Teacher/ManageClassInformation/ClassCadre';
+import Classmate from '../../Teacher/ManageClassInformation/Classmate';
 
 import Layout from '../../../res/dimensions';
 
@@ -14,15 +19,64 @@ class ManageClassInformation extends Component {
     header: null,
   }
 
+  constructor(props) {
+    super(props);
+    this.state = {};
+  }
+
   render() {
     return (
       <ScrollView>
-        <TouchableOpacity
-          style={styles.class}
-          onPress={() => {}}
-        >
+        <View style={styles.class}>
           <Text style={styles.classFont}>班主任</Text>
+        </View>
+        <TouchableOpacity
+          style={styles.card}
+        >
+          {
+            this.props.theTeacherInCharge.map((item) => {
+              return (
+                <TheTeacherInCharge
+                  key={`teacher${item.id}`}
+                  item={item}
+                />
+              );
+            })
+          }
         </TouchableOpacity>
+
+        <View style={styles.class}>
+          <Text style={styles.classFont}>班干部</Text>
+        </View>
+        <View style={styles.card}>
+          {
+            this.props.classCadre.map((item) => {
+              return (
+                <ClassCadre
+                  key={`cadre${item.id}`}
+                  item={item}
+                />
+              );
+            })
+          }
+        </View>
+
+        <View style={styles.class}>
+          <Text style={styles.classFont}>同学</Text>
+        </View>
+        <View style={styles.card}>
+          {
+            this.props.classmate.map((item) => {
+              console.log(`student: ${JSON.stringify(item)}`);
+              return (
+                <Classmate
+                  key={`student${item.id}`}
+                  item={item}
+                />
+              );
+            })
+          }
+        </View>
       </ScrollView>
     );
   }

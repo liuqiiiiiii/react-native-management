@@ -1,44 +1,83 @@
 import React, { Component } from 'react';
 import {
   StyleSheet,
-  Text,
   View,
-  Image,
+  Text,
+  ScrollView,
 } from 'react-native';
+import { connect } from 'react-redux';
 
+import Form from '../../Teacher/ScoreEntry/Form';
 import Layout from '../../../res/dimensions';
 
-export default class Scores extends Component {
+class ScoreEntry extends Component {
   static navigationOptions = {
     header: null,
   }
   render() {
     return (
-      <View style={styles.global}>
-        <Image
-          style={styles.image}
-          source={{ uri: "https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2472987446,3817427182&fm=27&gp=0.jpg" }}
-        />
-        <Text style={styles.font}>满分，都是满分</Text>
-        <Text style={styles.font}>每位同学都很优秀</Text>
-      </View>
+      <ScrollView style={styles.global}>
+        <View style={styles.top}>
+          <Text style={styles.topFont}>成绩查询</Text>
+        </View>
+
+        <View style={styles.titleBar}>
+          <Text style={styles.name}>姓名</Text>
+          <Text style={styles.class}>班级</Text>
+          <Text style={styles.subject}>科目</Text>
+          <Text style={styles.grade}>分数</Text>
+        </View>
+
+        {
+          this.props.classScore.map((item) => {
+            return (
+              <Form
+                key={`liuqi${item.id}`}
+                item={item}
+              />
+            );
+          })
+        }
+      </ScrollView>
     );
   }
 }
 
 const styles = StyleSheet.create({
   global: {
-    marginTop: Layout.Height(100),
-    alignItems: 'center',
+    paddingHorizontal: Layout.Width(40),
+  },
+  top: {
+    marginTop: Layout.Width(40),
     justifyContent: 'center',
+    alignItems: 'center',
   },
-  image: {
-    height: Layout.Height(300),
-    width: Layout.Width(300),
-    marginBottom: Layout.Height(100),
+  topFont: {
+    fontSize: 28,
   },
-  font: {
-    fontSize: 30,
-    lineHeight: 80,
+  titleBar: {
+    flexDirection: 'row',
+    justifyContent: 'space-around',
+    borderBottomWidth: 1,
+    borderColor: 'lightgray',
+    marginTop: Layout.Height(40),
+    paddingBottom: Layout.Height(20),
+  },
+  name: {
+    color: 'red',
+  },
+  class: {
+    color: 'orange',
+  },
+  subject: {
+    color: 'green',
+  },
+  grade: {
+    color: 'blue',
   },
 });
+
+
+export default connect(({ score }) => ({
+  ...score,
+}))(ScoreEntry);

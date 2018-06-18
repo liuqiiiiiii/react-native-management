@@ -4,6 +4,8 @@ export default {
   namespace: 'score',
   state: {
     classScore: [],
+
+    // classmateScore: [],
   },
   
   effects: {
