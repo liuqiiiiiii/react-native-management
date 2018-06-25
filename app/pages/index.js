@@ -8,10 +8,11 @@ import {
   Picker,
   TextInput,
   TouchableOpacity,
+  Alert,
 } from 'react-native';
 import { Button } from 'react-native-elements';
 
-import Navigator, { dispatcher } from '../helper/navigator';
+import Navigator, { dispatcher, baseURL } from '../helper/navigator';
 import { createAction } from '../helper';
 import Layout from '../res/dimensions';
 
@@ -26,7 +27,7 @@ export default class Index extends Component {
     super(props);
     dispatch = dispatcher(this.props);
     this.state = {
-      role: 'student',
+      role: 'teacher',
       className: '计算机专业',
       name: '仝月虹',
       pass: '111111',
@@ -36,7 +37,7 @@ export default class Index extends Component {
   handleSubmit = async () => {
     const dispatch = dispatcher(this.props);
     try {
-      let res = await fetch('http://10.0.0.43:8080/user/login', {//eslint-disable-line
+      let res = await fetch(`${baseURL}/user/login`, {//eslint-disable-line
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
@@ -56,6 +57,10 @@ export default class Index extends Component {
         } else {
           dispatch(Navigator.navigate('Teacher'));
         }
+      } else {
+        Alert.alert(
+          '用户名或密码错误^_^',
+        )
       }
     } catch (e) {
       console.log(`error: ${e}`);

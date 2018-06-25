@@ -102,7 +102,7 @@ class Student extends Component {
     } catch (e) {
       console.log(`error: ${e}`);
     }
-    dispatch(Navigator.navigate('ManageClassInformation'));
+    dispatch(Navigator.navigate('ClassInformation'));
   }
 
   managementAnnounce = async () => {
@@ -140,6 +140,25 @@ class Student extends Component {
       console.log(`liuqiiiiiiii->${JSON.stringify(data)}`);
       dispatch(createAction('score/saveScore')(data));
       dispatch(Navigator.navigate('Scores'));
+    } catch (e) {
+      console.log(`error: ${e}`);
+    }
+  }
+
+  delete = async () => {
+    try {
+      let res = await fetch(`${baseURL}/student/delete`, {//eslint-disable-line
+        method: 'POST',
+        mode: 'cors',
+        credentials: 'include',
+        body: JSON.stringify({
+          className: this.props.className,
+          name: this.props.loginName,
+        }),
+      });
+      const data = await res.json();
+      console.log(`liuqiliuqi->${JSON.stringify(data)}`);
+      dispatch(Navigator.navigate('Main'));
     } catch (e) {
       console.log(`error: ${e}`);
     }
@@ -215,6 +234,15 @@ class Student extends Component {
             <Text style={styles.cardName}>查询成绩</Text>
           </TouchableOpacity>
         </View>
+
+        <TouchableOpacity
+          style={styles.bottom}
+          onPress={this.delete}
+        >
+          <Text style={styles.bottomFont}>
+            退出班级
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     );
   }
@@ -255,6 +283,13 @@ const styles = StyleSheet.create({
   cardName: {
     fontSize: 18,
     color: '#FFFFFF',
+  },
+  bottom: {
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  bottomFont: {
+    fontSize: 18,
   },
 });
 

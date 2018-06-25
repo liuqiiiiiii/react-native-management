@@ -1,6 +1,6 @@
 import { NavigationActions } from 'react-navigation';
 
-export const baseURL = 'http://10.0.0.43:8080';
+export const baseURL = 'http://192.168.43.218:8080';
 
 export function dispatcher(props) {
   return props.dispatch || props.navigation.dispatch;

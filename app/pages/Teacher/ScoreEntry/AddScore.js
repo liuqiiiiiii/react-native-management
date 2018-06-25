@@ -11,43 +11,36 @@ import {
 } from 'react-native';
 import { connect } from 'react-redux';
 
-import Navigator, { dispatcher, baseURL } from '../../../helper/navigator';
+import { dispatcher, baseURL } from '../../../helper/navigator';
 import Layout from '../../../res/dimensions';
 
-class ModifyInformation extends Component {
+class AddSorce extends Component {
   static navigationOptions = {
     header: null,
   }
+
   constructor(props) {
     super(props);
     this.state = {
       name: '',
-      sex: '',
-      age: '',
-      studentid: '',
-      phone: '',
-      address: '',
-      duty: '',
+      classroom: '',
+      subject: '',
+      grade: '',
     };
   }
 
   handleSubmit = async () => {
-    const dispatch = dispatcher(this.props);
-
     try {
-      let res = await fetch(`${baseURL}/student/add`, {
+      let res = await fetch(`${baseURL}/grade/add`, {
         method: 'POST',
         mode: 'cors',
         credentials: 'include',
         body: JSON.stringify({
           className: this.props.className,
           name: this.state.name,
-          sex: this.state.sex,
-          age: this.state.age,
-          studentid: this.state.studentid,
-          phone: this.state.phone,
-          address: this.state.address,
-          duty: this.state.duty,
+          classroom: this.state.classroom,
+          subject: this.state.subject,
+          grade: this.state.grade,
         }),
       });
       const data = await res.json();
@@ -82,67 +75,34 @@ class ModifyInformation extends Component {
 
         <View style={styles.input}>
           <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>性别</Text>
+            <Text style={styles.inputFont}>班级</Text>
           </View>
           <TextInput
             style={styles.textInput}
-            value={this.state.sex}
-            onChangeText={(sex) => this.setState({ sex })}
+            value={this.state.classroom}
+            onChangeText={(classroom) => this.setState({ classroom })}
           />
         </View>
 
         <View style={styles.input}>
           <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>年龄</Text>
+            <Text style={styles.inputFont}>科目</Text>
           </View>
           <TextInput
             style={styles.textInput}
-            value={this.state.age}
-            onChangeText={(age) => this.setState({ age })}
+            value={this.state.subject}
+            onChangeText={(subject) => this.setState({ subject })}
           />
         </View>
 
         <View style={styles.input}>
           <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>学号</Text>
+            <Text style={styles.inputFont}>分数</Text>
           </View>
           <TextInput
             style={styles.textInput}
-            value={this.state.studentid}
-            onChangeText={(studentid) => this.setState({ studentid })}
-          />
-        </View>
-
-        <View style={styles.input}>
-          <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>手机</Text>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.phone}
-            onChangeText={(phone) => this.setState({ phone })}
-          />
-        </View>
-
-        <View style={styles.input}>
-          <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>地址</Text>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.address}
-            onChangeText={(address) => this.setState({ address })}
-          />
-        </View>
-
-        <View style={styles.input}>
-          <View style={styles.inputTitle}>
-            <Text style={styles.inputFont}>职务</Text>
-          </View>
-          <TextInput
-            style={styles.textInput}
-            value={this.state.duty}
-            onChangeText={(duty) => this.setState({ duty })}
+            value={this.state.grade}
+            onChangeText={(grade) => this.setState({ grade })}
           />
         </View>
 
@@ -207,4 +167,4 @@ const styles = StyleSheet.create({
 
 export default connect(({ state }) => ({
   ...state,
-}))(ModifyInformation);
+}))(AddSorce);

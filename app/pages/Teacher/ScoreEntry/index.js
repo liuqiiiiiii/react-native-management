@@ -4,28 +4,45 @@ import {
   View,
   Text,
   ScrollView,
+  TouchableOpacity,
 } from 'react-native';
 import { connect } from 'react-redux';
 
+import Navigator, { dispatcher } from '../../../helper/navigator';
+
 import Form from './Form';
 import Layout from '../../../res/dimensions';
+
+let dispatch;
 
 class ScoreEntry extends Component {
   static navigationOptions = {
     header: null,
   }
+
+  constructor(props) {
+    super(props);
+    this.state = {};
+    dispatch = dispatcher(this.props);
+  }
+
   render() {
     return (
       <ScrollView style={styles.global}>
         <View style={styles.top}>
           <Text style={styles.topFont}>成绩录入</Text>
         </View>
+        <TouchableOpacity
+          onPress={() => dispatch(Navigator.navigate('AddScore'))}
+        >
+          <Text style={styles.topButtonFont}>添加</Text>
+        </TouchableOpacity>
 
         <View style={styles.titleBar}>
-      <Text style={styles.name}>姓名</Text>
-      <Text style={styles.class}>班级</Text>
-      <Text style={styles.subject}>科目</Text>
-      <Text style={styles.grade}>分数</Text>
+          <Text style={styles.name}>姓名</Text>
+          <Text style={styles.class}>班级</Text>
+          <Text style={styles.subject}>科目</Text>
+          <Text style={styles.grade}>分数</Text>
         </View>
 
         {
@@ -51,9 +68,14 @@ const styles = StyleSheet.create({
     marginTop: Layout.Width(40),
     justifyContent: 'center',
     alignItems: 'center',
+    flexDirection: 'row',
   },
   topFont: {
-    fontSize: 28,
+    fontSize: 24,
+  },
+  topButtonFont: {
+    fontSize: 14,
+    textAlign: 'right',
   },
   titleBar: {
     flexDirection: 'row',
@@ -76,7 +98,6 @@ const styles = StyleSheet.create({
     color: 'blue',
   },
 });
-
 
 export default connect(({ score }) => ({
   ...score,

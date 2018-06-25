@@ -13,6 +13,9 @@ import ClassCadre from './ClassCadre';
 import Classmate from './Classmate';
 
 import Layout from '../../../res/dimensions';
+import Navigator, { dispatcher } from '../../../helper/navigator';
+
+let dispatch;
 
 class ManageClassInformation extends Component {
   static navigationOptions = {
@@ -22,6 +25,7 @@ class ManageClassInformation extends Component {
   constructor(props) {
     super(props);
     this.state = {};
+    dispatch = dispatcher(this.props);
   }
 
   render() {
@@ -47,6 +51,11 @@ class ManageClassInformation extends Component {
 
         <View style={styles.class}>
           <Text style={styles.classFont}>班干部</Text>
+          <TouchableOpacity
+            onPress={() => dispatch(Navigator.navigate('ModifyInformation'))}
+          >
+            <Text style={styles.classButtonFont}>添加</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.card}>
           {
@@ -63,6 +72,11 @@ class ManageClassInformation extends Component {
 
         <View style={styles.class}>
           <Text style={styles.classFont}>同学</Text>
+          <TouchableOpacity
+            onPress={() => dispatch(Navigator.navigate('ModifyInformation'))}
+          >
+            <Text style={styles.classButtonFont}>添加</Text>
+          </TouchableOpacity>
         </View>
         <View style={styles.card}>
           {
@@ -96,6 +110,10 @@ const styles = StyleSheet.create({
   classFont: {
     fontSize: 30,
     color: '#000000', //black
+  },
+  classButtonFont: {
+    fontSize: 14,
+    textAlign: 'right',
   },
   card: {
     marginHorizontal: Layout.Width(40),

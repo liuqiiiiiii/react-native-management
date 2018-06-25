@@ -215,7 +215,6 @@ const styles = StyleSheet.create({
   },
 });
 
-
 export default connect(({ state, personalInformation }) => ({
   ...state,
   ...personalInformation,
